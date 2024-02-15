@@ -1,0 +1,59 @@
+﻿@model IEnumerable<KuShop.ViewModels.PdVM>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    var stext = ViewBag.stext;
+}
+<h1> Product </h1>
+<form asp-controller="Product" asp-action="Index">
+    <div class="row">
+        <div class="col">
+            <a class=" btn btn-primary" asp-action="Create">
+                เพิ่ม
+            </a>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">ค้นหา</span>
+                <input type="text" name="stext" class="form-control" value="@stext" />
+                <button type="submit" class="btn  btn-secondary">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    
+</form>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>ลำดับ</th>
+        <th>รหัสสินค้า</th>
+        <th>ชื่อสินค้า</th>
+        <th>ประเภทสินค้า</th>
+        <th>ยี่ห้อ</th>
+        <th>ราคาขาย</th>
+        <th>Stock</th>
+
+    </tr>
+    @{
+        var i = 0;
+    }
+    @foreach(var item in Model)
+    {
+        i++;
+    <tr>
+        
+        <td></td>
+        <td>@i</td>
+        <td>@item.PdId</td>
+        <td>@item.PdName</td>
+        <td>@item.PdtName</td>
+        <td>@item.BrandName</td>
+        <td>@item.PdPrice</td>
+        <td>@item.PdStk</td>
+    </tr>
+    }
+</table>
